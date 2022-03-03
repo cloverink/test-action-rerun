@@ -4,23 +4,40 @@ on:
     branches: [ main ]
 
 jobs:
+
   job1:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-        with:
-          node-version: '12'
-          cache: 'npm'
+      - name: test1
+        run: |
+          echo test1
+          exit 1
 
-      - name: test
-        uses: nick-fields/retry@v2.4.0
-        id: test
-        with:
-          warning_on_retry: true
-          timeout_minutes: 10
-          max_attempts: 3
-          command: yarn test
+      - name: test2
+        run: |
+          echo test2
+          exit 0
+
+  # job1:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - uses: actions/setup-node@v2
+  #       with:
+  #         node-version: '12'
+  #         cache: 'npm'
+
+  #     - name: test
+  #       uses: nick-fields/retry@v2
+  #       id: test
+  #       with:
+  #         warning_on_retry: true
+  #         timeout_minutes: 10
+  #         max_attempts: 3
+  #         command: |
+  #           curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-0.7.0-linux-amd64 > ./cc-test-reporter
+  #           chmod +x ./cc-test-reporter
+  #           echo "sum.test.js" "sum1.test.js" | xargs npx jest --silent
           # new_command_on_retry: |
           #   yarn test2
   # job2:
