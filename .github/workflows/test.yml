@@ -10,7 +10,6 @@ jobs:
       test-output: ${{ steps.task1.outcome || steps.task2.outcome }}
     steps:
       - name: Step 1
-        continue-on-error: true
         id: task1
         run: |
           exit 1
