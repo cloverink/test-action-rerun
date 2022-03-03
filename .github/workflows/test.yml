@@ -17,9 +17,10 @@ jobs:
       - name: Step 2
         uses: nick-fields/retry@v2.4.0
         id: task2
-        command: yarn test1
         with:
           max_attempts: 3
+          command: |
+            yarn test1
 
   # job2:
   #   runs-on: ubuntu-latest
