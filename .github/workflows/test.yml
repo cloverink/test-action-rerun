@@ -9,6 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: test1
+        continue-on-error: true
         run: |
           echo test1
           exit 1
