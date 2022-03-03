@@ -13,12 +13,17 @@ jobs:
         id: task1
         run: |
           yarn test1
+          echo '::set-output name=test_result::success'
 
       - name: Step 2
-        if: failure()
         id: task2
+        if: failure()
         run: |
           yarn test2
+          echo '::set-output name=test_result::success'
+
+      - name: check value
+        run: echo "xxx ${{ job1.outputs.test_result }}"
 
   # job2:
   #   runs-on: ubuntu-latest
