@@ -23,9 +23,6 @@ jobs:
           max_attempts: 3
           command: |
             yarn test1
-          on_retry_command: echo "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-          new_command_on_retry: |
-            yarn test2
   # job2:
   #   runs-on: ubuntu-latest
   #   needs:
