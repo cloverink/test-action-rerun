@@ -23,6 +23,7 @@ jobs:
           max_attempts: 3
           command: |
             yarn test1
+            yarn test2
           new_command_on_retry: |
             yarn test2
   # job2:
