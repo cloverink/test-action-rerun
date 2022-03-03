@@ -1,0 +1,10 @@
+{
+  "name": "test-action-rerun",
+  "version": "1.0.0",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "test1": "node test1.js",
+    "test2": "node test2.js"
+  }
+}
