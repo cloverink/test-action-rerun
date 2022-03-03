@@ -15,6 +15,7 @@ jobs:
           yarn test1
 
       - name: Step 2
+        if: failure()
         id: task2
         run: |
           yarn test2
