@@ -6,6 +6,8 @@ on:
 jobs:
   job1:
     runs-on: ubuntu-latest
+    outputs:
+      test_result: ${{ steps.task1.outputs.test_result || steps.task2.outputs.test_result }}
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
@@ -14,6 +16,7 @@ jobs:
         run: |
           yarn test1
           echo '::set-output name=test_result::success'
+        continue-on-error: true
 
       - name: Step 2
         id: task2
@@ -22,15 +25,10 @@ jobs:
           yarn test2
           echo '::set-output name=test_result::success'
 
-      - name: check value
-        run: echo "xxx ${{ job1.outputs.test_result }}"
 
-  # job2:
-  #   runs-on: ubuntu-latest
-  #   needs:
-  #     - job1
-  #   if: ${{ needs.job1.outputs.test-output == 'success' }}
-  #   steps:
-  #     - name: Step 1
-  #       id: task1
-  #       run: exit 1
+  job2:
+    runs-on: ubuntu-latest
+    needs:
+      - job1
+    steps:
+      - run: echo ${{needs.job1.outputs.test_result}}
