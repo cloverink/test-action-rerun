@@ -15,3 +15,10 @@ jobs:
         id: task2
         run: exit 0
         if: failure()
+
+  job2:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Step 1
+        id: task1
+        run: exit 1
