@@ -4,7 +4,9 @@
   "main": "index.js",
   "private": true,
   "scripts": {
-    "test1": "node test1.js",
-    "test2": "node test2.js"
+    "test": "jest"
+  },
+  "dependencies": {
+    "jest": "^27.5.1"
   }
 }

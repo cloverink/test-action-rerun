@@ -9,21 +9,21 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
-      - name: Step 1
-        id: task1
-        run: |
-          yarn test2
+        with:
+          node-version: '12'
+          cache: 'npm'
 
-      - name: Step 2
+      - name: test
         uses: nick-fields/retry@v2
-        id: task2
+        id: test
         with:
           warning_on_retry: true
           timeout_minutes: 10
           max_attempts: 3
           command: |
-            yarn test2
-            yarn test1
+            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-0.7.0-linux-amd64 > ./cc-test-reporter
+            chmod +x ./cc-test-reporter
+            echo "sum.test.js" "sum1.test.js" | xargs npx jest
           # new_command_on_retry: |
           #   yarn test2
   # job2:
