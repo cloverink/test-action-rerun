@@ -14,9 +14,8 @@ jobs:
         run: |
           yarn test2
 
-      - uses: nick-fields/retry@v2
-
       - name: Step 2
+        uses: nick-fields/retry@v2
         id: task2
         run: |
           yarn test1
